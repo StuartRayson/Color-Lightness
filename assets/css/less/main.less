@@ -1,0 +1,54 @@
+// Grid System
+// -------------------------
+
+@column-width: 60;
+@gutter-width: 30;
+@columns: 12;
+
+@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+@total-width: 100%;
+
+.column(@x,@columns:@columns) {
+	display: inline;
+	float: left;	
+	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
+}
+
+.grid (@index) when (@index > 0){
+    .col-@{index}{
+		.column(@index);
+   }
+	.grid(@index - 1);
+}
+.grid(@columns);			
+
+
+// Master Styles
+// -------------------------
+
+html {
+ 	font-size: 62.5%; /* Sets up the Base 10 stuff */
+}
+
+p{
+	.font-size(13);
+}
+
+#element{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	background-color: #888888;
+}
+
+
+// Fire Fox Only 
+// -----------------------
+
+@-moz-document url-prefix() {
+
+}
