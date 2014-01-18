@@ -44,6 +44,16 @@ var Lightness = {
             percentage: 50
         }, options);
 
+        var updateElement = function ($element, lightnessValue) {
+            $element.data("lightness", lightnessValue);
+
+            if (lightnessValue > settings.percentage) {
+                $element.addClass(settings.lightClass).removeClass(settings.darkClass);
+            } else {
+                $element.addClass(settings.darkClass).removeClass(settings.lightClass);
+            }
+        };
+
         this.each(function (index, element) {
             var $element = $(element),
                 colourElement,
@@ -58,19 +68,30 @@ var Lightness = {
                     colourElement = $element.css("background-color");
                     break;
 
+                case "image":
+                    if (typeof RGBaster === "undefined") {
+                        throw Error("RGBaster must be installed to perform this colourType");
+                    }
+
+                    if (!$element.is('img')) {
+                        throw Error("Only img tags are supported for this colourType");
+                    }
+
+                    RGBaster.colors(element, function (payload) {
+                        lightnessValue = Lightness.convertColourToLightness(payload.dominant);
+
+                        updateElement($element, lightnessValue);
+                    }, 1);
+
+                    return;
+
                 default:
                     throw Error("Unrecognised colourType; must be one of 'color' or 'background'");
             }
 
             lightnessValue = Lightness.convertColourToLightness(colourElement);
 
-            $element.data("lightness", lightnessValue);
-
-            if (lightnessValue > settings.percentage) {
-                $element.addClass(settings.lightClass).removeClass(settings.darkClass);
-            } else {
-                $element.addClass(settings.darkClass).removeClass(settings.lightClass);
-            }
+            updateElement($element, lightnessValue);
         });
     }
 })(jQuery);
