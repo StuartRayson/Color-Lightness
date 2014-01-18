@@ -1,9 +1,8 @@
-function convertHexCodeToLightness(hexCode)
-{
+function convertHexCodeToLightness(hexCode) {
     var r = parseInt(hexCode.substring(1, 3), 16),
         g = parseInt(hexCode.substring(3, 5), 16),
         b = parseInt(hexCode.substring(5, 7), 16);
-    
+
     r /= 255, g /= 255, b /= 255;
 
     var max = Math.max(r, g, b),
@@ -13,8 +12,7 @@ function convertHexCodeToLightness(hexCode)
     return Math.floor(l * 100);
 }
 
-function rgbToLightness(rgbCode)
-{
+function rgbToLightness(rgbCode) {
 
     var c = rgbCode;
     var rgb = c.match(/\d+/g);
@@ -22,7 +20,7 @@ function rgbToLightness(rgbCode)
     var r = rgb[0],
         g = rgb[1],
         b = rgb[2];
-    
+
     r /= 255, g /= 255, b /= 255;
 
     var max = Math.max(r, g, b),
@@ -34,19 +32,19 @@ function rgbToLightness(rgbCode)
 
 
 (function ($) {
-        $.fn.getSaturation = function (options) {
+    $.fn.getSaturation = function (options) {
 
         var settings = $.extend({}, {
-            type        : "rgb",
-            colourType  : "background",
-            darkClass   : "dark",
-            lightClass  : "light",
-            percentage  : 50     
+            type: "rgb",
+            colourType: "background",
+            darkClass: "dark",
+            lightClass: "light",
+            percentage: 50
         }, options);
 
         this.each(function (index, element) {
-                    
-            switch(settings.colourType){
+
+            switch (settings.colourType) {
                 case "color" :
                     var colourElement = $(element).css('color')
                     break;
@@ -56,26 +54,26 @@ function rgbToLightness(rgbCode)
                     break;
             }
 
-            switch(settings.colourType){
+            switch (settings.colourType) {
                 case "hex" :
-                    var lightness = convertHexCodeToLightness(colourElement);  
+                    var lightness = convertHexCodeToLightness(colourElement);
                     break;
 
                 default:
-                    var lightness = rgbToLightness(colourElement);  
+                    var lightness = rgbToLightness(colourElement);
                     break;
             }
 
 
             $(element).attr("data-saturation", lightness);
 
-            if (lightness > settings.percentage){
+            if (lightness > settings.percentage) {
                 $(element).addClass(settings.lightClass);
-            }else{
+            } else {
                 $(element).addClass(settings.darkClass);
             }
 
         });
-    }    
+    }
 })(jQuery);
 
