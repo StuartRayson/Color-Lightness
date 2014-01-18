@@ -1,4 +1,11 @@
 var Lightness = {
+    convertColourToLightness : function (colour) {
+        if (colour.match(/^#?[0-9]{6}$/)) {
+            return this.convertHexCodeToLightness(colour);
+        } else {
+            return this.convertRgbToLightness(colour);
+        }
+    },
     convertHexCodeToLightness : function (hexCode) {
         hexCode = hexCode.replace(/^#/, '');
 
@@ -32,7 +39,6 @@ var Lightness = {
     $.fn.getLightness = function (options) {
 
         var settings = $.extend({}, {
-            type: "rgb",
             colourType: "background",
             darkClass: "dark",
             lightClass: "light",
@@ -55,15 +61,7 @@ var Lightness = {
                     break;
             }
 
-            switch (settings.colourType) {
-                case "hex" :
-                    lightnessValue = Lightness.convertHexCodeToLightness(colourElement);
-                    break;
-
-                default:
-                    lightnessValue = Lightness.convertRgbToLightness(colourElement);
-                    break;
-            }
+            lightnessValue = Lightness.convertColourToLightness(colourElement);
 
 
             $element.data("lightness", lightnessValue);
