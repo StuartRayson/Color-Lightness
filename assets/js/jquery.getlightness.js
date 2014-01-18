@@ -37,7 +37,6 @@ var Lightness = {
 
 (function ($) {
     $.fn.getLightness = function (options) {
-
         var settings = $.extend({}, {
             colourType: "background",
             darkClass: "dark",
@@ -46,7 +45,6 @@ var Lightness = {
         }, options);
 
         this.each(function (index, element) {
-
             var $element = $(element),
                 colourElement,
                 lightnessValue;
@@ -66,7 +64,6 @@ var Lightness = {
 
             lightnessValue = Lightness.convertColourToLightness(colourElement);
 
-
             $element.data("lightness", lightnessValue);
 
             if (lightnessValue > settings.percentage) {
@@ -74,8 +71,6 @@ var Lightness = {
             } else {
                 $element.addClass(settings.darkClass).removeClass(settings.lightClass);
             }
-
         });
     }
 })(jQuery);
-
