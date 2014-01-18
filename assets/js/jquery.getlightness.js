@@ -4,13 +4,7 @@ var Lightness = {
             g = parseInt(hexCode.substring(3, 5), 16),
             b = parseInt(hexCode.substring(5, 7), 16);
 
-        r /= 255; g /= 255; b /= 255;
-
-        var max = Math.max(r, g, b),
-            min = Math.min(r, g, b),
-            lightnessValue = (max + min) / 2;
-
-        return Math.floor(lightnessValue * 100);
+        return this.convertRgbPartsToLightness(r, g, b);
     },
     convertRgbToLightness : function (rgb) {
         rgb = rgb.match(/\d+/g);
@@ -19,6 +13,9 @@ var Lightness = {
             g = rgb[1],
             b = rgb[2];
 
+        return this.convertRgbPartsToLightness(r, g, b);
+    },
+    convertRgbPartsToLightness : function (r, g, b) {
         r /= 255; g /= 255; b /= 255;
 
         var max = Math.max(r, g, b),
