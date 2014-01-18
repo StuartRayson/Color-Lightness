@@ -13,20 +13,19 @@ var Lightness = {
         return Math.floor(lightnessValue * 100);
     },
     convertRgbToLightness : function (rgb) {
-        var c = rgbCode;
-        var rgb = c.match(/\d+/g);
+        rgb = rgb.match(/\d+/g);
 
         var r = rgb[0],
             g = rgb[1],
             b = rgb[2];
 
-        r /= 255, g /= 255, b /= 255;
+        r /= 255; g /= 255; b /= 255;
 
         var max = Math.max(r, g, b),
             min = Math.min(r, g, b),
-            l = (max + min) / 2;
+            lightnessValue = (max + min) / 2;
 
-        return Math.floor(l * 100);
+        return Math.floor(lightnessValue * 100);
     }
 };
 
