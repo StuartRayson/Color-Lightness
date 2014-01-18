@@ -7,7 +7,7 @@ var Lightness = {
         }
     },
     convertHexCodeToLightness : function (hexCode) {
-        hexCode = hexCode.replace(/^#/, '');
+        hexCode = hexCode.replace(/^#/, "");
 
         var r = parseInt(hexCode.substring(0, 2), 16),
             g = parseInt(hexCode.substring(2, 4), 16),
@@ -53,11 +53,11 @@ var Lightness = {
 
             switch (settings.colourType) {
                 case "color" :
-                    colourElement = $element.css('color');
+                    colourElement = $element.css("color");
                     break;
 
                 default:
-                    colourElement = $element.css('background-color');
+                    colourElement = $element.css("background-color");
                     break;
             }
 
