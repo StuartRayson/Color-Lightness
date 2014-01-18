@@ -46,11 +46,11 @@ var Lightness = {
 
             switch (settings.colourType) {
                 case "color" :
-                    colourElement = $(element).css('color')
+                    colourElement = $(element).css('color');
                     break;
 
                 default:
-                    colourElement = $(element).css('background-color')
+                    colourElement = $(element).css('background-color');
                     break;
             }
 
