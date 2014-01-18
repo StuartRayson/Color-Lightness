@@ -56,9 +56,12 @@ var Lightness = {
                     colourElement = $element.css("color");
                     break;
 
-                default:
+                case "background":
                     colourElement = $element.css("background-color");
                     break;
+
+                default:
+                    throw Error("Unrecognised colourType; must be one of 'color' or 'background'");
             }
 
             lightnessValue = Lightness.convertColourToLightness(colourElement);
