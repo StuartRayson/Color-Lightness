@@ -71,9 +71,9 @@ function rgbToLightness(rgbCode) {
             $(element).data("lightness", lightness);
 
             if (lightness > settings.percentage) {
-                $(element).addClass(settings.lightClass);
+                $(element).addClass(settings.lightClass).removeClass(settings.darkClass);
             } else {
-                $(element).addClass(settings.darkClass);
+                $(element).addClass(settings.darkClass).removeClass(settings.lightClass);
             }
 
         });
