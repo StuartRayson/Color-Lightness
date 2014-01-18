@@ -1,8 +1,10 @@
 var Lightness = {
     convertHexCodeToLightness : function (hexCode) {
-        var r = parseInt(hexCode.substring(1, 3), 16),
-            g = parseInt(hexCode.substring(3, 5), 16),
-            b = parseInt(hexCode.substring(5, 7), 16);
+        hexCode = hexCode.replace(/^#/, '');
+
+        var r = parseInt(hexCode.substring(0, 2), 16),
+            g = parseInt(hexCode.substring(2, 4), 16),
+            b = parseInt(hexCode.substring(4, 6), 16);
 
         return this.convertRgbPartsToLightness(r, g, b);
     },
