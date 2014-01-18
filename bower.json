@@ -1,0 +1,6 @@
+{
+    "name": "Color-Lightness",
+    "dependencies": {
+        "rgbaster": "1.0.0"
+    }
+}

@@ -17,14 +17,16 @@
     
     <body>
 
-        <div id="element"></div>
-        
+        <img id="demo-image-1" src="assets/image/image1.jpg" />
+        <img id="demo-image-2" src="assets/image/image2.jpg" />
+
+        <script type="text/javascript" src="bower_components/rgbaster/rgbaster.js"></script>
         <script type="text/javascript" src="assets/js/jquery.getlightness.js"></script>
 
-
         <script type="text/javascript">
-            $('#element').getLightness();
-
+            $("#demo-image-1, #demo-image-2").getLightness({
+                colourType: "image"
+            });
         </script>
 
     </body>
