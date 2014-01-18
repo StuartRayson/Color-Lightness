@@ -86,7 +86,7 @@ var Lightness = {
                     return;
 
                 default:
-                    throw Error("Unrecognised colourType; must be one of 'color' or 'background'");
+                    throw Error("Unrecognised colourType; must be one of 'color', 'background', or 'image'");
             }
 
             lightnessValue = Lightness.convertColourToLightness(colourElement);
