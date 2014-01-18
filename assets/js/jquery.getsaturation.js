@@ -44,23 +44,26 @@ function rgbToLightness(rgbCode) {
 
         this.each(function (index, element) {
 
+            var colourElement,
+                lightness;
+
             switch (settings.colourType) {
                 case "color" :
-                    var colourElement = $(element).css('color')
+                    colourElement = $(element).css('color')
                     break;
 
                 default:
-                    var colourElement = $(element).css('background-color')
+                    colourElement = $(element).css('background-color')
                     break;
             }
 
             switch (settings.colourType) {
                 case "hex" :
-                    var lightness = convertHexCodeToLightness(colourElement);
+                    lightness = convertHexCodeToLightness(colourElement);
                     break;
 
                 default:
-                    var lightness = rgbToLightness(colourElement);
+                    lightness = rgbToLightness(colourElement);
                     break;
             }
 
