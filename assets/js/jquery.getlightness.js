@@ -8,9 +8,9 @@ var Lightness = {
 
         var max = Math.max(r, g, b),
             min = Math.min(r, g, b),
-            l = (max + min) / 2;
+            lightnessValue = (max + min) / 2;
 
-        return Math.floor(l * 100);
+        return Math.floor(lightnessValue * 100);
     },
     convertRgbToLightness : function (rgb) {
         var c = rgbCode;
