@@ -32,7 +32,7 @@ function rgbToLightness(rgbCode) {
 
 
 (function ($) {
-    $.fn.getSaturation = function (options) {
+    $.fn.getLightness = function (options) {
 
         var settings = $.extend({}, {
             type: "rgb",
@@ -68,7 +68,7 @@ function rgbToLightness(rgbCode) {
             }
 
 
-            $(element).attr("data-saturation", lightness);
+            $(element).data("lightness", lightness);
 
             if (lightness > settings.percentage) {
                 $(element).addClass(settings.lightClass);
