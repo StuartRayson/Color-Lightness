@@ -41,16 +41,17 @@ var Lightness = {
 
         this.each(function (index, element) {
 
-            var colourElement,
+            var $element = $(element),
+                colourElement,
                 lightnessValue;
 
             switch (settings.colourType) {
                 case "color" :
-                    colourElement = $(element).css('color');
+                    colourElement = $element.css('color');
                     break;
 
                 default:
-                    colourElement = $(element).css('background-color');
+                    colourElement = $element.css('background-color');
                     break;
             }
 
@@ -65,12 +66,12 @@ var Lightness = {
             }
 
 
-            $(element).data("lightness", lightnessValue);
+            $element.data("lightness", lightnessValue);
 
             if (lightnessValue > settings.percentage) {
-                $(element).addClass(settings.lightClass).removeClass(settings.darkClass);
+                $element.addClass(settings.lightClass).removeClass(settings.darkClass);
             } else {
-                $(element).addClass(settings.darkClass).removeClass(settings.lightClass);
+                $element.addClass(settings.darkClass).removeClass(settings.lightClass);
             }
 
         });
