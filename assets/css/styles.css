@@ -30,3 +30,16 @@ img::-moz-selection,
   left: 0;
   background-color: #888888;
 }
+
+img {
+    display: block;
+    padding: 2em;
+    border: 1px solid black;
+    margin-bottom: 2em;
+}
+img.light {
+    background: black;
+}
+img.dark {
+    background: white;
+}
